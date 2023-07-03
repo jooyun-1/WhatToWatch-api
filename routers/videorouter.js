@@ -7,5 +7,6 @@ router.get("/video-genres", videoController.getVideoGenres);
 router.post("/videos", videoController.addVideos);
 router.get("/videos", videoController.getVideos);
 router.get("/recommend-videos", videoController.recommendVideos);
-router.get("/allvideos", videoController.getAllVideos);
+router.get("/top20videos", videoController.getTop20Videos);
+
 module.exports = router;

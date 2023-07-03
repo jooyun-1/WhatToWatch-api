@@ -66,7 +66,7 @@ const getVideos = async (req, res) => {
   }
 };
 
-const getAllVideos = async (req, res) => {
+const getTop20Videos = async (req, res) => {
   try {
     const videoList = await video.findAll({
       limit: 20,
@@ -105,5 +105,5 @@ module.exports = {
   addVideos,
   getVideos,
   recommendVideos,
-  getAllVideos,
+  getTop20Videos,
 };

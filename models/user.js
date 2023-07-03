@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.JSON,
         allowNull: true,
       },
-      ott: {
+      tvgenres: {
         type: DataTypes.JSON,
         allowNull: true,
       },
-      subcategory: {
+      videogenres: {
         type: DataTypes.JSON,
         allowNull: true,
       },

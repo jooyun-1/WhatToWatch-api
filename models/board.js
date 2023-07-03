@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
       },
       title: {
         type: DataTypes.STRING(50),
@@ -20,14 +20,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      fk_user_id: {
-        type: DataTypes.INTEGER(20),
-        allowNull: false,
-        references: {
-          model: "user",
-          key: "id",
-        },
-      },
+      // fk_user_id: {
+      //   type: DataTypes.INTEGER(20),
+      //   allowNull: false,
+      //   references: {
+      //     model: "user",
+      //     key: "id",
+      //   },
+      // },
     },
     {
       tableName: "board",

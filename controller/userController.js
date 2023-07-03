@@ -24,7 +24,7 @@ const user = db.User;
 // sessionStore.sync();
 
 const addUser = async (req, res) => {
-  const { email, password, username, genres, ott, subcategory } = req.body;
+  const { email, password, username, genres, tvgenres, videogenres } = req.body;
   try {
     const checkDuplicateEmail = await user.count({
       where: {
@@ -37,8 +37,8 @@ const addUser = async (req, res) => {
         password,
         username,
         genres,
-        ott,
-        subcategory,
+        tvgenres,
+        videogenres,
       });
 
       res.status(200).json({ result });
@@ -95,12 +95,11 @@ const logout = async (req, res) => {
   }
 };
 const getUser_login = async (req, res) => {
-  const { email, password } = req.body;
+  const email = req.query.email;
   try {
     const result = await user.findOne({
       where: {
         email,
-        password,
       },
     });
     res.status(200).json({ result });

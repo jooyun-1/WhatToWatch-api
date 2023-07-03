@@ -48,45 +48,38 @@ const getPostsDetail = async (req, res) => {
 
 const updatePosts = async (req, res) => {
   const { id, title, post } = req.body;
-  if (req.session && req.session.user) {
-    try {
-      const result = await board.update(
-        {
-          title: title,
-          post: post,
+  try {
+    const result = await board.update(
+      {
+        title: title,
+        post: post,
+      },
+      {
+        where: {
+          id: id,
         },
-        {
-          where: {
-            id: id,
-          },
-        }
-      );
-      res.status(200).json({ result });
-    } catch (err) {
-      res.status(500).json({ err });
-    }
-  } else {
-    res.status(401).json("Not Login");
+      }
+    );
+    res.status(200).json({ result });
+  } catch (err) {
+    res.status(500).json({ err });
   }
 };
 
 const deletePosts = async (req, res) => {
   const { id } = req.body;
-  if (req.session && req.session.user) {
-    try {
-      await board.destroy({
-        where: {
-          id: id,
-        },
-      });
-      res.status(200).json("success");
-    } catch (err) {
-      res.status(500).json({ err });
-    }
-  } else {
-    res.status(401).json("Not Login");
+  try {
+    await board.destroy({
+      where: {
+        id: id,
+      },
+    });
+    res.status(200).json("success");
+  } catch (err) {
+    res.status(500).json({ err });
   }
 };
+
 module.exports = {
   addPost,
   getPosts,
